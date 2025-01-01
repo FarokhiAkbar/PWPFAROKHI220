@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>User Management</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const messageBox = document.querySelector('.flash-messages');
+            if (messageBox) {
+                setTimeout(() => {
+                    messageBox.style.opacity = '0';
+                    setTimeout(() => {
+                        messageBox.remove();
+                    }, 500); // Wait for fade out before removing
+                }, 2000); // 2 seconds
+            }
+        });
+    </script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-4">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flash-messages bg-green-500 text-white p-4 rounded">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

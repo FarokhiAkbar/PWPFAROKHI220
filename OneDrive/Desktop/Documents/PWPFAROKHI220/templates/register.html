@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Create an Account</h2>
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-6">
+            {{ form.username.label(class="block text-gray-700 text-sm font-medium") }}
+            {{ form.username(class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2") }}
+        </div>
+        <div class="mb-6">
+            {{ form.password.label(class="block text-gray-700 text-sm font-medium") }}
+            {{ form.password(class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2") }}
+        </div>
+        {{ form.submit(class="w-full bg-blue-600 text-white font-semibold rounded-lg py-2 px-4 transition duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500") }}
+    </form>
+</div>
+{% endblock %}
